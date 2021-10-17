@@ -5,9 +5,12 @@ class TodoModel {
   late String _title;
   late String _description;
   late String _date;
-  late int _priority;
+  late String _priority;
+  late bool _checked;
 
-  TodoModel(this._title, this._description, this._date, this._priority);
+  TodoModel(
+      this._id, this._title, this._description, this._date, this._priority,
+      [this._checked = false]);
 
   TodoModel.map(dynamic obj) {
     this._title = obj['title'];
@@ -19,7 +22,8 @@ class TodoModel {
   String get title => _title;
   String get description => _description;
   String get date => _date;
-  int get priority => _priority;
+  String get priority => _priority;
+  bool get checked => _checked;
 
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
@@ -29,6 +33,7 @@ class TodoModel {
     map['title'] = _title;
     map['description'] = _description;
     map['date'] = _date;
+    map['checked'] = _checked;
     map['priority'] = _priority;
 
     return map;
@@ -39,6 +44,7 @@ class TodoModel {
     this._title = map['title'];
     this._description = map['description'];
     this._date = map['date'];
+    this._checked = map['checked'];
     this._priority = map['priority'];
   }
 }
